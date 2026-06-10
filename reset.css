@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.5; /* Melhora a legibilidade padrão */
+    -webkit-font-smoothing: antialiased; /* Torna as fontes mais nítidas */
+}
+
+ul, ol {
+    list-style: none; /* Remove bolinhas e números de listas */
+}
+
+a {
+    text-decoration: none; /* Remove o sublinhado azul padrão */
+    color: inherit; /* Faz o link herdar a cor do texto pai */
+}
+
+img {
+    max-width: 100%; /* Garante que imagens sejam responsivas */
+    display: block;
+}
