@@ -2,6 +2,7 @@ const menuToggle = document.querySelector(".menu-toggle")
 const navLinks = document.querySelector(".nav-links")
 const links = document.querySelectorAll(".nav-links a")
 const activeSections = document.querySelectorAll("section")
+const revealElements = document.querySelectorAll(".reveal")
 
 menuToggle.addEventListener("click", function () {
     navLinks.classList.toggle("active");
@@ -39,3 +40,17 @@ function activeMenuOnScroll() {
 
 window.addEventListener("scroll", activeMenuOnScroll)
 activeMenuOnScroll()
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if(entry.isIntersecting) {
+            entry.target.classList.add("visible")
+        }
+    })
+}, {
+    threshold: 0.3
+})
+
+revealElements.forEach(function(reveal){
+    observer.observe(reveal)
+})
