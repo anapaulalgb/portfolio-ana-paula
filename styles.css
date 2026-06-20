@@ -28,14 +28,10 @@ strong {
 }
 
 html {
-    scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
 }
 
-section {
-    scroll-snap-align: start;
-}
 
 h1,
 h2,
@@ -153,6 +149,18 @@ nav ul {
     transform: translateY(0);
 }
 
+.menu-toggle {
+    display: none;
+    background: var(--dark-cards);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    border-radius: 12px;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
 .brand img {
     width: 32px;
     height: 32px;
@@ -186,7 +194,7 @@ nav ul {
 
 .hero-photo {
     background-color: var(--second-highlight);
-    background-image: url();
+    background-image: url(assets/icons/hero-photo.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -204,6 +212,8 @@ nav ul {
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    
 }
 
 .hero-label {
@@ -254,11 +264,14 @@ nav ul {
 
 .hero-card-text {
     flex: 1;
-    padding-bottom: 14px;
+}
+
+.hero-card-item {
+    padding: 22px 18px;
     border-bottom: 1px solid var(--border);
 }
 
-.hero-card-item:last-child .hero-card-text {
+.hero-card-item:last-child {
     border-bottom: none;
 }
 
@@ -493,9 +506,9 @@ a.hero-button2 {
 
 .project-description {
     color: var(--text-secondary);
-    font-size: 12px;
-    margin-left: 15px;
+    font-size: 13px;
     line-height: 1.6;
+    padding: 6px 16px;
 }
 
 .project-tags {
@@ -519,13 +532,6 @@ a.hero-button2 {
     font-size: 11px;
     font-weight: 600;
     line-height: 1;
-}
-
-.project-description {
-    color: var(--text-secondary);
-    font-size: 12px;
-    line-height: 10px;
-    padding: 6px 6px;
 }
 
 #contato {
@@ -624,30 +630,16 @@ footer {
 }
 
 @media (max-width: 900px) {
-    .hero-container {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-
-    .hero-text h1 {
-        max-width: 100%;
-        font-size: 15px;
-    }
-
-    .hero-text p {
-        max-width: 100%;
-    }
-
-    .hero-photo {
-        min-height: auto;
-    }
-
-    .hero-actions {
-        flex-wrap: wrap;
+    .container {
+        padding: 0 24px;
     }
 
     .nav-container {
         position: relative;
+    }
+
+    .nav-cta {
+        display: none;
     }
 
     .nav-links {
@@ -656,6 +648,7 @@ footer {
         top: 70px;
         right: 24px;
         width: 220px;
+        z-index: 1001;
 
         background-color: var(--dark-cards);
         border: 1px solid var(--border);
@@ -670,25 +663,241 @@ footer {
         display: flex;
     }
 
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #inicio {
+        padding-top: 48px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 24px;
+    }
+
+    .hero-text h1 {
+        max-width: 100%;
+        font-size: 32px;
+        line-height: 1.15;
+    }
+
+    .hero-text p {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.8;
+        padding: 18px 0;
+    }
+
+    .hero-actions {
+        flex-wrap: wrap;
+        margin-top: 28px;
+        gap: 14px;
+    }
+
     .hero-photo {
-        min-height: 360px;
+        min-height: 380px;
+    }
+
+    .hero-visual {
+        min-height: auto;
     }
 
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .contact-content {
+    .project-grid {
         grid-template-columns: 1fr;
     }
 
-    .contact-info h2 {
-        font-size: 28px;
+    .project-preview-link {
+        height: 260px;
     }
 
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .contact-info h2 {
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 600px) {
+    .container {
+        padding: 0 18px;
+    }
+
+    nav {
+        padding: 12px 0;
+    }
+
+    .nav-container {
+        padding: 0 18px;
+    }
+
+    .brand a {
+        font-size: 16px;
+        gap: 10px;
+    }
+
+    .brand img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .nav-links {
+        top: 62px;
+        right: 18px;
+        width: calc(100vw - 36px);
+        padding: 22px;
+    }
+
+    #inicio {
+        padding-top: 36px;
+    }
+
+    .hero-container {
+        gap: 20px;
+    }
+
+    .hero-label,
+    .section-label {
+        font-size: 12px;
+        letter-spacing: 1.6px;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+        line-height: 1.15;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+        line-height: 1.8;
+        padding: 16px 0;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        margin-top: 22px;
+        gap: 12px;
+    }
+
+    .hero-button,
+    .hero-button2 {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-photo {
+        min-height: 320px;
+        border-radius: 20px;
+    }
+
+    .hero-visual {
+        border-radius: 20px;
+    }
+
+    .hero-card-item {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .hero-card-item span {
+        width: 42px;
+        height: 42px;
+    }
+
+    #habilidades,
+    #projetos,
+    #contato {
+        padding: 70px 0;
+    }
+
+    #habilidades h2,
+    .section-title,
+    .contact-info h2 {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+
+    .section-text {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 32px;
+    }
+
+    .skill-card {
+        min-height: auto;
+        padding: 22px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 32px;
+    }
+
+    .project-card {
+        padding: 14px;
+        border-radius: 20px;
+    }
+
+    .project-preview-link {
+        height: 210px;
+        border-radius: 16px;
+    }
+
+    .project-preview {
+        border-radius: 16px;
+    }
+
+    .project-card-header {
+        margin: 14px 8px 8px;
+    }
+
+    .project-title {
+        font-size: 18px;
+    }
+
+    .project-description {
+        padding: 6px 8px;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .project-tags {
+        margin: 14px 8px;
+    }
+
+    .contact-content {
+        gap: 28px;
+    }
+
+    .contact-info p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .contact-cta {
+        width: 100%;
+    }
+
+    .contact-card {
+        padding: 18px;
+    }
+
     .footer-content {
         flex-direction: column;
         align-items: flex-start;
